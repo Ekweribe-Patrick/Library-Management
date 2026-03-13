@@ -1,10 +1,11 @@
 import express from "express";
+const app = express()
 import mongoose from "mongoose";
 import userRoutes from "./routes/userRoutes.js";
 import authorRoutes from "./routes/authorRoutes.js"
 import bookRoutes from "./routes/bookRoutes.js"
 import borrowBookRoutes from "./routes/borrowBookRoutes.js"
-const app = express()
+import cors from 'cors'
 import { config } from "dotenv";
 import cookieParser from "cookie-parser";
 config()
@@ -23,6 +24,10 @@ app.use(express.json());
 app.use(express.urlencoded({extended:true}))
 
 app.use(cookieParser());
+
+app.use(cors({
+    origin: 'http://localhost:5173/AllUsers'
+}))
 
 app.use('/api/user', userRoutes)
 app.use('/api/author', authorRoutes)
