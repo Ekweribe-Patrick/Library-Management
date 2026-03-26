@@ -17,7 +17,7 @@ const borrowedBookSchema = new Schema({
 
     borrowed_at:{
         type: Date,
-        default: Date.now,
+        default: Date.now(),
         required: true
     },
 

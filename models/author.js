@@ -4,7 +4,8 @@ const Schema = mongoose.Schema;
 const authorSchema = new Schema({
     fullName:{
         type: String,
-        required: true
+        required: true,
+        unique: true
     },
 
     bio:{

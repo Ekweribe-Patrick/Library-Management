@@ -4,9 +4,12 @@ import User from "../models/user.js";
 
 const borrowBook = async (req, res)=>{
     try {
-        let {bookId, due_at} = req.body;
+        let {due_at} = req.body;
+
+        let {bookId} = req.params;
 
         let userId = req.user.id
+
         let existingUser = await User.findById(userId)
 
         let existingBook = await Books.findById(bookId)

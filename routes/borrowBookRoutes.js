@@ -4,7 +4,7 @@ import authorize from "../middlewares/authorize.js";
 import { returnBook } from "../controllers/historyController.js";
 const router = express.Router();
 
-router.post('/borrowBook/:id', authorize(["user"]), borrowBook);
+router.post('/borrowBook/:bookId', authorize(["user"]), borrowBook);
 router.get('/', authorize(["admin", "liberian"]), getAllBorrowedBooks)
 
 router.post('/returnBook', authorize(["user"]), returnBook)

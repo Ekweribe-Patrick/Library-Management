@@ -2,7 +2,7 @@ import Author from "../models/author.js";
 
 const createAuthor = async (req, res)=>{
     try {
-       let {fullName, bio, birthdate} = req.body;
+       let {fullName, bio, birthDate, booksWritten} = req.body;
 
         if (!fullName) {
             return res.status(400).json({message: "All fields are required."})
@@ -13,7 +13,7 @@ const createAuthor = async (req, res)=>{
         let user = await Author.create({
             fullName,
             bio,
-            birthdate,
+            birthDate,
             booksWritten
         
         })
