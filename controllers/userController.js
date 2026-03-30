@@ -10,6 +10,14 @@ const createUser = async (req, res)=>{
         if (!fullName || !email || !password) {
             return res.status(400).json({message: "All fields are required."})
 
+        };
+
+        const existingUser = await User.findOne({email});
+        if(existingUser) {
+            return res.status(401).json({
+                success: false,
+                message: "Account already exists with this email, log in instead."
+            })
         }
 
         let hashedPassword = await bcrypt.hash(password,10)
